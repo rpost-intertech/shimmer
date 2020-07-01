@@ -92,7 +92,7 @@ If you want to build and run the code in your IDE,
 1. Clone this Git repository.
 1. Open the cloned repository in your IDE.
 1. Open the application.yaml file found in shim-server/src/main/resources and make the following change:
-   1. Change the data.mongodb.ui from mongodb://*mongo*:27017/*omh_dsu* to mongodb://*localhost*:27017/*company-chim*
+   1. Change the data.mongodb.ui from mongodb://*mongo*:27017/*omh_dsu* to mongodb://*localhost*:27017/*company-shim*
 1. If in IntelliJ, go to the Gradle menu and navigate to shimmer > Tasks > application > bootRun to run the application.
    1. Otherwise, the gradle terminal command is gradlew shim-server:bootRun	 
 
