@@ -110,6 +110,7 @@ public class LegacyAuthorizationController {
     public AuthorizationRequestParameters initiateAuthorization(
             @RequestParam(value = "username") String username,
             @RequestParam(value = "redirect_url", required = false) String dataProviderRedirectUrl,
+            @RequestParam(value = "client_redirect_url") String clientRedirectUrl,
             @PathVariable("shim") String shim) throws ShimException {
 
         logger.debug("Received /authorize/{} request with username {}", shim, username);
@@ -125,6 +126,7 @@ public class LegacyAuthorizationController {
                 .getAuthorizationRequestParameters(username, additionalParameters);
 
         authorizationRequestParameters.setUsername(username);
+        authorizationRequestParameters.setClientRedirectUrl(clientRedirectUrl);
 
         return authorizationRequestParametersRepo.save(authorizationRequestParameters);
     }
@@ -214,7 +216,7 @@ public class LegacyAuthorizationController {
             }
             catch (IOException e) {
                 e.printStackTrace();
-                throw new ShimException("Error occurred redirecting to :" + authParams.getRedirectUri());
+                throw new ShimException("Error occurred redirecting to :" + authParams.getClientRedirectUrl());
             }
             return null;
         }
